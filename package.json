@@ -1,7 +1,7 @@
 {
   "name": "green-api-messenger",
   "version": "1.0.0",
-  "homepage": "/",
+  "homepage": "https://ilanevazno.github.io/green-api-chat",
   "author": "Ilya Sigidin",
   "scripts": {
     "start": "NODE_ENV=dev craco start",
@@ -12,7 +12,9 @@
     "lint:fix": "eslint . --ext js,jsx,mjs,ts,tsx --fix",
     "prepare": "husky install",
     "precommit": "npm run lint:fix && npm run format",
-    "prepush": "npm run lint"
+    "prepush": "npm run lint",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@ant-design/icons": "^5.0.1",
@@ -55,6 +57,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.31.10",
     "eslint-plugin-unicorn": "^42.0.0",
+    "gh-pages": "^5.0.0",
     "husky": "^7.0.4",
     "prettier": "^2.7.1",
     "ts-jest": "^29.1.0"
