@@ -1,36 +1,20 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import {
-  ENotificationTypes,
-  IContact,
-  IReceiveNotification,
-} from "entities/contact";
+import { IContact } from "entities/contact";
 import { api } from "api";
 import { RootState } from "store";
+import { ENotificationTypes, IReceiveNotification } from "entities/messenger";
 
 interface IMessengerState {
-  chats: Record<string, IContact>;
   selectedChat?: IContact;
   isSubscribedToNotifications: boolean;
   selectedChatData: Record<string, Record<string, any>>;
 }
 
 const initialState: IMessengerState = {
-  chats: {},
   isSubscribedToNotifications: false,
   selectedChat: undefined,
   selectedChatData: {},
 };
-
-export const findNewContact = createAsyncThunk(
-  "FIND_CONTACT",
-  async (payload: string) => {
-    try {
-      return await api.contacts.getContact(payload);
-    } catch {
-      throw new Error("error in founding new contact");
-    }
-  }
-);
 
 export const sendMessage = createAsyncThunk(
   "SEND_MESSAGE",
@@ -44,7 +28,7 @@ export const sendMessage = createAsyncThunk(
         return;
       }
 
-      const response = await api.contacts.sendMessage({
+      const response = await api.messenger.sendMessage({
         message,
         chatId: selectedChat.chatId,
       });
@@ -63,10 +47,10 @@ export const subscribeToNotifications = createAsyncThunk(
   "SUBSCRIBE_TO_NOTIFICATIONS",
   async (_, { dispatch }) => {
     try {
-      const notification = await api.contacts.receiveNotification();
+      const notification = await api.messenger.receiveNotification();
 
       if (notification) {
-        await api.contacts.deleteNotification(notification.receiptId);
+        await api.messenger.deleteNotification(notification.receiptId);
       }
 
       dispatch(subscribeToNotifications());
@@ -87,14 +71,6 @@ const slice = createSlice({
     },
   },
   extraReducers(builder): void {
-    builder.addCase(
-      findNewContact.fulfilled,
-      (state, action: PayloadAction<IContact>) => {
-        const { chatId } = action.payload;
-
-        state.chats[chatId] = action.payload;
-      }
-    );
     builder.addCase(subscribeToNotifications.pending, (state) => {
       state.isSubscribedToNotifications = true;
     });

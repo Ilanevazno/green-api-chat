@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
+import { findNewContact } from "store/contacts/slice";
 import { useAppDispatch } from "store/hooks";
-import { findNewContact } from "store/messenger/slice";
 
 export const useAddContact = () => {
   const dispatch = useAppDispatch();

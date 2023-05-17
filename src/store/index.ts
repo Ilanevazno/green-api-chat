@@ -1,11 +1,13 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import authReducer from "./auth/slice";
 import messengerReducer from "./messenger/slice";
+import contactsReducer from "./contacts/slice";
 
 const store = configureStore({
   reducer: {
     auth: authReducer,
     messenger: messengerReducer,
+    contacts: contactsReducer,
   },
 });
 

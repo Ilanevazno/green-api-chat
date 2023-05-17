@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { Spin } from "antd";
-import { ENotificationTypes } from "entities/contact";
+import { ENotificationTypes } from "entities/messenger";
 
 export const Wrapper = styled.div`
   min-height: 80%;

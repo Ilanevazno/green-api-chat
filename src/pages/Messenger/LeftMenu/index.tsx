@@ -10,7 +10,7 @@ import Contact from "./Contact";
 
 const LeftMenu = (): ReactElement => {
   const addingNewContactModalController = useModalController();
-  const { chats } = useAppSelector((state: RootState) => state.messenger);
+  const { contacts } = useAppSelector((state: RootState) => state.contacts);
 
   return (
     <Wrapper>
@@ -23,8 +23,8 @@ const LeftMenu = (): ReactElement => {
         </Button>
       </Header>
 
-      {Object.keys(chats).map((key: string) => (
-        <Contact key={key} data={chats[key]} />
+      {Object.keys(contacts).map((key: string) => (
+        <Contact key={key} data={contacts[key]} />
       ))}
 
       {addingNewContactModalController.isOpen && (
