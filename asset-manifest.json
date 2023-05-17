@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/green-api-chat/static/js/main.c6ca05ee.js",
+    "index.html": "/green-api-chat/index.html",
+    "main.c6ca05ee.js.map": "/green-api-chat/static/js/main.c6ca05ee.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.c6ca05ee.js"
+  ]
+}
