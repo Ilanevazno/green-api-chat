@@ -1,7 +1,7 @@
 {
   "name": "green-api-messenger",
   "version": "1.0.0",
-  "homepage": "https://ilanevazno.github.io/green-api-chat",
+  "homepage": "https://ilanevazno.github.io/green-api-chat/",
   "author": "Ilya Sigidin",
   "scripts": {
     "start": "NODE_ENV=dev craco start",
